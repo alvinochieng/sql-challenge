@@ -1,0 +1,83 @@
+HOMEWORK ERD CODE
+
+"Department"
+-
+dept_no PK varchar
+dept_name varchar
+
+"Department_employee"
+-
+emp_no FK int
+dept_no PK varchar 
+from_date date
+to_date date
+
+"Department Manager"
+-
+dept_no PK varcharDepartment
+-
+dept_no PK varchar
+dept_name varchar
+
+Department_employee
+-
+EMP_NO FK -< employees.emp_no
+dept_no FK >- Department.dept_no
+from_date date
+to_date date
+
+"Department Manager"
+-
+dept_no FK -< Department.dept_no
+emp_no FK  >- employees.emp_no
+from_date date
+to_date date
+
+"employees"
+-
+emp_no PK int
+birth_date date
+first_name varchar
+last_name varchar
+gender char(1)
+hire_date date
+
+"Salaries"
+-
+emp_no FK -< employees.emp_no
+salary int
+from_date date
+to_date date
+
+"Titles"
+-
+emp_no FK -< employees.emp_no
+title varchar
+from_date date
+to_date date
+emp_no FK int
+from_date date
+to_date date
+
+"employees"
+-
+emp_no PK int
+birth_date date
+first_name varchar
+last_name varchar
+gender char(1)
+hire_date date
+
+"Salaries"
+-
+emp_no PK int
+salary int
+from_date date
+to_date date
+
+"Titles"
+-
+emp_no pk 
+title varchar
+from_date date
+to_date date
