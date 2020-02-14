@@ -72,3 +72,5 @@ INNER JOIN employees e
 ON e.emp_no = s.emp_no;
 
 -- SELECT * FROM emp_pay;
+
+SELECT * FROM employees WHERE date_part('year', hire_date) = 1986;
