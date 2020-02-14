@@ -64,6 +64,8 @@ REFERENCES "employees" ("emp_no");
 ALTER TABLE "Titles" ADD CONSTRAINT "fk_Titles_emp_no" FOREIGN KEY("emp_no")
 REFERENCES "employees" ("emp_no"); */
 
+-- QUESTION 1
+
 -- CREATE VIEW emp_pay AS
 SELECT e.emp_no, e.last_name, 
 e.first_name, e.gender, s.salary
@@ -73,4 +75,21 @@ ON e.emp_no = s.emp_no;
 
 -- SELECT * FROM emp_pay;
 
-SELECT * FROM employees WHERE date_part('year', hire_date) = 1986;
+-- QUESTION 2
+
+-- SELECT * FROM employees WHERE date_part('year', hire_date) = 1986;
+
+-- QUESTION 3 
+
+SELECT first_name AS "first name", last_name AS "last name"
+FROM employees
+WHERE emp_no IN
+(
+	SELECT emp_no FROM "Department Manager" WHERE dept_no IN
+	(
+		SELECT dept_no FROM "Department"
+	)
+);
+
+--QUESTION 5 
+SELECT * FROM employees WHERE first_name = 'Hercules' AND last_name LIKE 'B%';
