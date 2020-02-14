@@ -93,3 +93,8 @@ WHERE emp_no IN
 
 --QUESTION 5 
 SELECT * FROM employees WHERE first_name = 'Hercules' AND last_name LIKE 'B%';
+
+--QUESTION 7
+SELECT last_name, COUNT(last_name) AS "last name count" FROM employees
+GROUP BY last_name
+ORDER BY "last name count" DESC;
