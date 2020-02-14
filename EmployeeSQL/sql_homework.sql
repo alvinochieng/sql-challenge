@@ -64,5 +64,11 @@ REFERENCES "employees" ("emp_no");
 ALTER TABLE "Titles" ADD CONSTRAINT "fk_Titles_emp_no" FOREIGN KEY("emp_no")
 REFERENCES "employees" ("emp_no"); */
 
-SELECT * FROM "Department Manager";
+-- CREATE VIEW emp_pay AS
+SELECT e.emp_no, e.last_name, 
+e.first_name, e.gender, s.salary
+FROM "Salaries" s
+INNER JOIN employees e 
+ON e.emp_no = s.emp_no;
 
+-- SELECT * FROM emp_pay;
