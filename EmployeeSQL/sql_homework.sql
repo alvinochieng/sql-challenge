@@ -73,11 +73,11 @@ FROM "Salaries" s
 INNER JOIN employees e 
 ON e.emp_no = s.emp_no;
 
--- SELECT * FROM emp_pay;
+SELECT * FROM emp_pay;
 
 -- QUESTION 2
 
--- SELECT * FROM employees WHERE date_part('year', hire_date) = 1986;
+SELECT * FROM employees WHERE date_part('year', hire_date) = 1986;
 
 -- QUESTION 3 
 
@@ -101,10 +101,31 @@ e.emp_no = d.emp_no
 INNER JOIN "Department" dt ON 
 d.dept_no = dt.dept_no; 
 
---QUESTION 5 
-/* SELECT * FROM employees WHERE first_name = 'Hercules' AND last_name LIKE 'B%';
+--QUESTION 5
 
---QUESTION 7
-SELECT last_name, COUNT(last_name) AS "last name count" FROM employees
+ SELECT * FROM employees WHERE first_name = 'Hercules' AND last_name LIKE 'B%';
+ 
+ --QUESTION 6
+ 
+ SELECT e.emp_no AS "employee number", e.last_name AS "last name", e.first_name AS "first name",
+ dt.dept_name AS "department name"
+ FROM employees e
+ INNER JOIN "Department_employee" d ON 
+ e.emp_no = d.emp_no
+ INNER JOIN "Department" dt ON
+ d.dept_no = dt.dept_no WHERE dt.dept_name = 'Sales';
+ 
+ --QUESTION 7
+
+ SELECT e.emp_no AS "employee number", e.last_name AS "last name", e.first_name AS "first name",
+ dt.dept_name AS "department name"
+ FROM employees e
+ INNER JOIN "Department_employee" d ON 
+ e.emp_no = d.emp_no
+ INNER JOIN "Department" dt ON
+ d.dept_no = dt.dept_no WHERE dt.dept_name = 'Sales' OR dt.dept_name = 'Development';
+ 
+--QUESTION 8
+/* SELECT last_name, COUNT(last_name) AS "last name count" FROM employees
 GROUP BY last_name
 ORDER BY "last name count" DESC; */
