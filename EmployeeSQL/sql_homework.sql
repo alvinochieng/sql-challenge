@@ -81,20 +81,30 @@ ON e.emp_no = s.emp_no;
 
 -- QUESTION 3 
 
-SELECT first_name AS "first name", last_name AS "last name"
-FROM employees
-WHERE emp_no IN
-(
-	SELECT emp_no FROM "Department Manager" WHERE dept_no IN
-	(
-		SELECT dept_no FROM "Department"
-	)
-);
+SELECT dt.dept_no, dt.dept_name,
+e.emp_no AS "employee number", e.first_name AS "first name", e.last_name AS "last name",
+dm.from_date AS "start employment date", 
+dm.to_date AS "end employment date"
+FROM employees e
+INNER JOIN "Department Manager" dm ON
+e.emp_no = dm.emp_no
+INNER JOIN "Department" dt ON
+dm.dept_no = dt.dept_no;
+
+--QUESTION 4
+
+SELECT e.emp_no AS "employee number", e.first_name AS "first name", 
+e.last_name AS "last name", dt.dept_name
+FROM employees e 
+INNER JOIN "Department_employee" d ON 
+e.emp_no = d.emp_no
+INNER JOIN "Department" dt ON 
+d.dept_no = dt.dept_no; 
 
 --QUESTION 5 
-SELECT * FROM employees WHERE first_name = 'Hercules' AND last_name LIKE 'B%';
+/* SELECT * FROM employees WHERE first_name = 'Hercules' AND last_name LIKE 'B%';
 
 --QUESTION 7
 SELECT last_name, COUNT(last_name) AS "last name count" FROM employees
 GROUP BY last_name
-ORDER BY "last name count" DESC;
+ORDER BY "last name count" DESC; */
