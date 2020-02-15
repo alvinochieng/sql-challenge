@@ -126,6 +126,6 @@ d.dept_no = dt.dept_no;
  d.dept_no = dt.dept_no WHERE dt.dept_name = 'Sales' OR dt.dept_name = 'Development';
  
 --QUESTION 8
-/* SELECT last_name, COUNT(last_name) AS "last name count" FROM employees
+SELECT last_name, COUNT(last_name) AS "last name count" FROM employees
 GROUP BY last_name
-ORDER BY "last name count" DESC; */
+ORDER BY "last name count" DESC; 
