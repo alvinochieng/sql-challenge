@@ -129,3 +129,12 @@ d.dept_no = dt.dept_no;
 SELECT last_name, COUNT(last_name) AS "last name count" FROM employees
 GROUP BY last_name
 ORDER BY "last name count" DESC; 
+
+-- BONUS QUESTION
+--CREATE VIEW title_sal AS
+SELECT s.salary, t.title
+FROM "Salaries" s
+INNER JOIN  "Titles" t
+ON s.emp_no = t.emp_no;
+
+
