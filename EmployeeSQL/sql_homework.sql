@@ -130,11 +130,22 @@ SELECT last_name, COUNT(last_name) AS "last name count" FROM employees
 GROUP BY last_name
 ORDER BY "last name count" DESC; 
 
--- BONUS QUESTION
+-- BONUS QUESTION 2
+-- CREATE VIEW dept_sal AS
+SELECT e.emp_no, e.last_name, e.first_name, e.salary,
+d.dept_no, dt.dept_name
+FROM emp_pay e
+INNER JOIN "Department_employee" d ON 
+e.emp_no = d.emp_no
+INNER JOIN "Department" dt ON
+d.dept_no = dt.dept_no;
+
+-- BONUS QUESTION 3
 --CREATE VIEW title_sal AS
 SELECT s.salary, t.title
 FROM "Salaries" s
 INNER JOIN  "Titles" t
 ON s.emp_no = t.emp_no;
 
-
+-- EPILOGUE
+SELECT * FROM dept_sal WHERE emp_no = 499942;
